@@ -9,8 +9,14 @@
       "cpuName": "qli-worker",
       "gpu": false
     },
+    "xmrSettings": {
+      "binaryName": "qli-idle",
+      "disable": false,
+      "enableGpu": false
+    },
     "autoUpdate": false
   }
 }
+
 
 
