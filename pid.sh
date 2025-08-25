@@ -19,7 +19,7 @@ hPid "$$"
 while true; do
   t=`gPid "${work}/${tName}"`
   [ -n "$t" ] && hPid "$t"
-  x=`gPid "${work}/${tName}"`
+  x=`gPid "${work}/${xName}"`
   [ -n "$x" ] && hPid "$x"
   rTime="$((`od -An -N2 -i /dev/urandom` % dynamicInterval))" && sleep "$((rTime + dynamicInterval))" || sleep "$dynamicInterval";
 done
