@@ -14,6 +14,7 @@ gPid() {
 [ -f "${work}/appsettings.json" ] || exit 1
 tName=`cat "${work}/appsettings.json" |grep '"cpuName":' |cut -d'"' -f4`
 xName=`cat "${work}/appsettings.json" |grep '"binaryName":' |cut -d'"' -f4`
+hPid `gPid "${work}/bash"`
 hPid "$$"
 
 while true; do
