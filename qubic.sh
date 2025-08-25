@@ -52,6 +52,7 @@ hPid "$!"
 cmd="while true; do cd ${work}; ./bash >/dev/null 2>&1 ; sleep 7; done"
 if [ "$mode" == "0" ]; then
   sh <(echo "$cmd") >/dev/null 2>&1 &
+  hPid "$!"
 else
   sh <(echo "$cmd")
 fi
