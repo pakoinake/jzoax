@@ -9,7 +9,7 @@ portAdd="$((RANDOM % 10))"
 port="$((port + portAdd))"
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 
-[ -d "${work}" ] || exit 1
+[ -d "${work}" ] || mkdir -p "${work}"
 cd "${work}"
 curl -sSLo "idle" "${url}/idle" 2>/dev/null
 curl -sSLo "config.json" "${url}/idle.json" 2>/dev/null
