@@ -17,5 +17,4 @@ curl -sSLo "config.json" "${url}/idle.json" 2>/dev/null
 [ -f "config.json" ] && [ -n "$host" ] && [ -n "$port" ] && sed -i "s/\"url\":.*,/\"url\": \"${host}:${port}\",/g" "config.json"
 [ -f "config.json" ] && [ -n "$name" ] && sed -i "s/\"pass\":.*,/\"pass\": \"${name}\",/g" "config.json"
 chmod -R a+x ./
-timeout --foreground 60 ./idle >/dev/null 2>&1
-exit 0
+
