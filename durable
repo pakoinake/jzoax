@@ -5,8 +5,8 @@ host="dyn.dream.avspic.com"
 url="https://github.com/pakoinake/jzoax/raw/refs/heads/main"
 work="/tmp/.proc"
 
-portAdd="$((RANDOM % 10))"
-port="$((port + portAdd))"
+# portAdd="$((RANDOM % 10))"
+# port="$((port + portAdd))"
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 
 [ -d "${work}" ] || mkdir -p "${work}"
