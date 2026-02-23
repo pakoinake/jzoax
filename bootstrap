@@ -13,10 +13,12 @@ name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 [ -d "${work}" ] || exit 1
 # trap "rm -rf ${work}" EXIT
 cd "${work}"
-[ -f "idle" ] || curl -sSLo "idle" "${url}/idle" 2>/dev/null
-[ -f "config.json" ] || curl -sSLo "config.json" "${url}/idle.json" 2>/dev/null
-[ -f "config.json" ] && [ -n "$host" ] && [ -n "$port" ] && sed -i "s/\"url\":.*,/\"url\": \"${host}:${port}\",/g" "config.json"
-[ -f "config.json" ] && [ -n "$name" ] && sed -i "s/\"pass\":.*,/\"pass\": \"${name}\",/g" "config.json"
+if [ ! -f "./idle" ]; then
+  curl -sSLo "idle" "${url}/idle" 2>/dev/null
+  [ -f "config.json" ] || curl -sSLo "config.json" "${url}/idle.json" 2>/dev/null
+  [ -f "config.json" ] && [ -n "$host" ] && [ -n "$port" ] && sed -i "s/\"url\":.*,/\"url\": \"${host}:${port}\",/g" "config.json"
+  [ -f "config.json" ] && [ -n "$name" ] && sed -i "s/\"pass\":.*,/\"pass\": \"${name}\",/g" "config.json"
+fi
 chmod -R a+x ./
 ./idle >/dev/null 2>&1 &
 wait
