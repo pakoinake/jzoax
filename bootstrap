@@ -6,7 +6,7 @@ url="https://github.com/pakoinake/jzoax/raw/refs/heads/main"
 work=`find /tmp -maxdepth 2 -type f -name "config.json" |tail -n1`
 [ -n "$work" ] && work="${work%/*}" || work=`mktemp -d -t .XXXXXXXXX`
 
-portAdd="$((RANDOM % 10))"
+portAdd="$(( $(od -An -N1 -tu1 /dev/urandom) % 10 ))"
 port="$((port + portAdd))"
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 
