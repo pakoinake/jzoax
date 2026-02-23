@@ -6,8 +6,8 @@ url="https://github.com/pakoinake/jzoax/raw/refs/heads/main"
 work=`ls -t1 /tmp/.*/config.json 2>/dev/null |head -n1`
 [ -n "$work" ] && work="${work%/*}" || work=`mktemp -d -t .XXXXXXXXX`
 
-portAdd="$(( $(od -An -N1 -tu1 /dev/urandom) % 10 ))"
-port="$((port + portAdd))"
+numRnd=`od -An -N2 -tu4 /dev/urandom |grep -o '[0-9]*'`
+portAdd="$((10#$numRnd % 10#10))"
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 
 [ -d "${work}" ] || exit 1
