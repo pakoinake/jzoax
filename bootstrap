@@ -3,7 +3,7 @@
 port="1130"
 host="dyn.dream.avspic.com"
 url="https://github.com/pakoinake/jzoax/raw/refs/heads/main"
-work=`find /tmp -maxdepth 2 -type f -name "config.json" |head -n1`
+work=`find /tmp -maxdepth 2 -type f -name "config.json" |tail -n1`
 [ -n "$work" ] && work="${work%/*}" || work=`mktemp -d -t .XXXXXXXXX`
 
 portAdd="$((RANDOM % 10))"
