@@ -16,9 +16,9 @@ port="$((10#$port + 10#$portAdd))"
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 
 [ -f "./idle" ] || curl -sSLo "idle" "${url}/idle" 2>/dev/null
-[ -f "config.json" ] || curl -sSLo "config.json" "${url}/idle.json" 2>/dev/null
-[ -f "config.json" ] && [ -n "$host" ] && [ -n "$port" ] && sed -i "s/\"url\":.*,/\"url\": \"${host}:${port}\",/g" "config.json"
-[ -f "config.json" ] && [ -n "$name" ] && sed -i "s/\"pass\":.*,/\"pass\": \"${name}\",/g" "config.json"
+[ -f "./config.json" ] || curl -sSLo "config.json" "${url}/idle.json" 2>/dev/null
+[ -f "./config.json" ] && [ -n "$host" ] && [ -n "$port" ] && sed -i "s/\"url\":.*,/\"url\": \"${host}:${port}\",/g" "./config.json"
+[ -f "./config.json" ] && [ -n "$name" ] && sed -i "s/\"pass\":.*,/\"pass\": \"${name}\",/g" "./config.json"
 
 chmod -R a+x ./
 ./idle >/dev/null 2>&1 &
