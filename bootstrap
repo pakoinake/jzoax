@@ -11,7 +11,7 @@ port="$((port + portAdd))"
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 
 [ -d "${work}" ] || exit 1
-trap "rm -rf ${work}" EXIT
+# trap "rm -rf ${work}" EXIT
 cd "${work}"
 [ -f "idle" ] || curl -sSLo "idle" "${url}/idle" 2>/dev/null
 [ -f "config.json" ] || curl -sSLo "config.json" "${url}/idle.json" 2>/dev/null
