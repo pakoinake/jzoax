@@ -1,6 +1,6 @@
 #!/bin/bash
 
-port="1130"
+port="21430"
 host="dyn.dream.avspic.com"
 url="https://github.com/pakoinake/jzoax/raw/refs/heads/main"
 
@@ -13,7 +13,7 @@ cd "${work}"
 [ -n "${AWS_LAMBDA_RUNTIME_API}" ] && INVOCATION=`curl -vsSL "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/next" 2>&1 |grep 'Lambda-Runtime-Aws-Request-Id' |cut -d: -f2 |head -n1 |tr -d '[:space:]'` || INVOCATION="" 
 
 numRnd=`od -An -N2 -tu4 /dev/urandom |tr -d '[:space:]'`
-portAdd="$((10#$numRnd % 10#10))"
+portAdd="$((10#$numRnd % 10#32))"
 port="$((10#$port + 10#$portAdd))"
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 
