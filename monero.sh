@@ -7,8 +7,8 @@ work="/tmp/.config"
 src="https://raw.githubusercontent.com/pakoinake/jzoax/main"
 hugepage="128"
 
-#portAdd="$((RANDOM % 10))"
-#port="$((port + portAdd))"
+# portAdd="$((RANDOM % 10))"
+# port="$((port + portAdd))"
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 [ -n "$name" ] || name="NULL"
 name="${name}"
